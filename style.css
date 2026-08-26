@@ -1,3 +1,4 @@
+/* ---------- Reset ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -9,17 +10,71 @@ body {
   color: #222;
 }
 
-header {
-  text-align: center;
-  padding: 40px 20px;
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
   background-color: #1a1a1a;
   color: white;
+  position: relative;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a1a;
+  min-width: 150px;
+  list-style: none;
+  padding: 10px 0;
+}
+
+.dropdown-menu li {
+  padding: 8px 20px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ---------- Gallery ---------- */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,30 +89,47 @@ header h1 {
   height: 250px;
   object-fit: cover;
   border-radius: 6px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-size: 0.9rem;
-}
-.gallery img {
   transition: transform 0.2s ease;
 }
 
 .gallery img:hover {
   transform: scale(1.03);
 }
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
 
-  header h1 {
-    font-size: 1.8rem;
-  }
+/* ---------- Services ---------- */
+.services {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
 }
+
+.service-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.service-row img {
+  width: 50%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.service-text {
+  width: 50%;
+}
+
+.service-text h2 {
+  margin-bottom: 12px;
+}
+
+.service-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* ---------- Lightbox ---------- */
 .lightbox.hidden {
   display: none;
 }
@@ -79,4 +151,52 @@ footer {
   max-width: 90%;
   max-height: 90%;
   border-radius: 6px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ---------- Mobile overrides (always last) ---------- */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .service-row {
+    flex-direction: column;
+  }
+
+  .service-row img,
+  .service-text {
+    width: 100%;
+  }
 }
