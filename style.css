@@ -1,5 +1,8 @@
 /* ---------- Reset ---------- */
-* {
+* html {
+  scroll-behavior: smooth;
+}
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -199,4 +202,63 @@ footer {
   .service-text {
     width: 100%;
   }
+}.contact {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.contact h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact label {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.contact button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background-color: #333;
+}.about {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  margin-bottom: 16px;
 }

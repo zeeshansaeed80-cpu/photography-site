@@ -1,75 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My Photography</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Photography</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
 
-  <header class="navbar">
-    <div class="logo">My Photography</div>
+  <header class="navbar" id="home">
+  <div class="logo">My Photography</div>
 
-    <nav>
-      <button class="hamburger" id="hamburgerBtn">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Gallery</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Nature</a></li>
-            <li><a href="#">Portraits</a></li>
-            <li><a href="#">Travel</a></li>
-          </ul>
-        </li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav>
+    <button class="hamburger" id="hamburgerBtn">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li class="dropdown">
+        <a href="#gallery">Gallery</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Nature</a></li>
+          <li><a href="#">Portraits</a></li>
+          <li><a href="#">Travel</a></li>
+        </ul>
+      </li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>
-    <section class="gallery">
-      <img src="images/Charles-Bridge.jpg" alt="Charles Bridge">
-      <img src="images/Church.jpg" alt="Church 2">
-      <img src="images/Inside-Church.jpg" alt="Inside Church">
-      <img src="images/Kafka.jpg" alt="Kafka">
-    </section>
-    <section class="services">
-  <div class="service-row">
-    <img src="images/Charles-Bridge.jpg" alt="Travel photography">
-    <div class="service-text">
-      <h2>Travel Photography</h2>
-      <p>Capturing the character of a place — its streets, light, and everyday moments — from cities to quiet countryside.</p>
+<main>
+  <section class="gallery" id="gallery">
+    <img src="images/Charles-Bridge.jpg" alt="Charles Bridge">
+    <img src="images/Church.jpg" alt="Church 2">
+    <img src="images/Inside-Church.jpg" alt="Inside Church">
+    <img src="images/Kafka.jpg" alt="Kafka">
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>I'm a Hobbyist based in Karachi, focused on travel and architectural photography. This is where I share a collection of shots from my travels and projects — take a look through the gallery, or get in touch below if you are interested.</p>
+  </section>
+
+  <section class="services">
+    <div class="service-row">
+      <img src="images/Charles-Bridge.jpg" alt="Travel photography">
+      <div class="service-text">
+        <h2>Travel Photography</h2>
+        <p>Capturing the character of a place — its streets, light, and everyday moments — from cities to quiet countryside.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="service-row">
-    <img src="images/Church.jpg" alt="Architecture photography">
-    <div class="service-text">
-      <h2>Architecture</h2>
-      <p>Interiors and exteriors shot with attention to structure, symmetry, and natural light.</p>
+    <div class="service-row">
+      <img src="images/Church.jpg" alt="Architecture photography">
+      <div class="service-text">
+        <h2>Architecture</h2>
+        <p>Interiors and exteriors shot with attention to structure, symmetry, and natural light.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="service-row">
-    <img src="images/Kafka.jpg" alt="Portrait photography">
-    <div class="service-text">
-      <h2>Portraits</h2>
-      <p>Natural, unposed portraits that feel like the person, not a stiff studio shot.</p>
+    <div class="service-row">
+      <img src="images/Kafka.jpg" alt="Portrait photography">
+      <div class="service-text">
+        <h2>Portraits</h2>
+        <p>Natural, unposed portraits that feel like the person, not a stiff studio shot.</p>
+      </div>
     </div>
-  </div>
-</section>
-  </main>
+  </section>
 
-  <footer>
-    <p>&copy; 2026 My Photography. All rights reserved.</p>
-  </footer>
+  <section class="contact" id="contact">
+    <h2>Get in Touch</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
 
-  <div id="lightbox" class="lightbox hidden">
-    <img id="lightbox-img" src="" alt="">
-  </div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
 
-  <script src="script.js"></script>
-</body>
-</html>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+
+    <footer>
+      <p>&copy; 2026 My Photography. All rights reserved.</p>
+    </footer>
+
+    <div id="lightbox" class="lightbox hidden">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
