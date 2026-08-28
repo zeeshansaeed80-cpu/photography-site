@@ -9,9 +9,12 @@
 html {
   scroll-behavior: smooth;
 }
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   color: #222;
 }
 
@@ -257,11 +260,15 @@ footer {
 .about {
   max-width: 700px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 20px 20px 60px;
   text-align: center;
 }
 
-.about h2 {
+.about p {
+  color: #707070;
+}
+
+.about p:not(:last-child) {
   margin-bottom: 16px;
 }
 /* ---------- Hero ---------- */
