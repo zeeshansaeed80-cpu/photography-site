@@ -134,18 +134,42 @@ body {
   margin: 0 auto;
 }
 
-.gallery img {
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.gallery-item img {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: 6px;
-  transition: transform 0.2s ease;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.gallery img:hover {
-  transform: scale(1.03);
+.gallery-item:hover img {
+  transform: scale(1.05);
 }
 
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+  color: white;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* ---------- Services (kept for reuse on the parlour site later) ---------- */
 .services {
   max-width: 1000px;
