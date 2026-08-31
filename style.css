@@ -1,5 +1,4 @@
 /* ---------- Reset ---------- */
-/* ---------- Reset ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +8,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 h1, h2 {
   font-family: 'Playfair Display', serif;
 }
@@ -16,6 +16,7 @@ h1, h2 {
 body {
   font-family: 'Lato', Arial, sans-serif;
   color: #222;
+  background-color: #ededed;
 }
 
 /* ---------- Navbar ---------- */
@@ -82,6 +83,47 @@ body {
   cursor: pointer;
 }
 
+/* ---------- Hero ---------- */
+.hero {
+  height: 80vh;
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- Intro ---------- */
+.intro {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ---------- About ---------- */
+.about {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+  text-align: center;
+}
+
+.about p {
+  color: #707070;
+}
+
+.about p:not(:last-child) {
+  margin-bottom: 16px;
+}
+
 /* ---------- Gallery ---------- */
 .gallery {
   display: grid;
@@ -97,13 +139,14 @@ body {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   border-radius: 6px;
+  transition: transform 0.2s ease;
+}
 
-} 
 .gallery img:hover {
   transform: scale(1.03);
 }
 
-/* ---------- Services ---------- */
+/* ---------- Services (kept for reuse on the parlour site later) ---------- */
 .services {
   max-width: 1000px;
   margin: 0 auto;
@@ -136,77 +179,8 @@ body {
   flex-direction: row-reverse;
 }
 
-/* ---------- Lightbox ---------- */
-.lightbox.hidden {
-  display: none;
-}
-
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 6px;
-}
-
-/* ---------- Footer ---------- */
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* ---------- Mobile overrides (always last) ---------- */
-@media (max-width: 600px) {
-  .logo img {
-  height: 36px;
-}
-
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color: #1a1a1a;
-    text-align: center;
-    padding: 20px 0;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .service-row {
-    flex-direction: column;
-  }
-
-  .service-row img,
-  .service-text {
-    width: 100%;
-  }
-}.contact {
+/* ---------- Contact ---------- */
+.contact {
   max-width: 600px;
   margin: 0 auto;
   padding: 60px 20px;
@@ -257,62 +231,108 @@ footer {
 .contact button:hover {
   background-color: #333;
 }
-.about {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 20px 20px 60px;
-  text-align: center;
+
+/* ---------- Lightbox ---------- */
+.lightbox.hidden {
+  display: none;
 }
 
-.about p {
-  color: #707070;
-}
-
-.about p:not(:last-child) {
-  margin-bottom: 16px;
-}
-/* ---------- Hero ---------- */
-.hero {
-  height: 80vh;
-  background-image: url('images/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: white;
+  cursor: pointer;
 }
 
-.hero {
-  height: 80vh;
-  background-image: url('images/hero.jpg');
-  background-size: cover;
-  background-position: center;
-}
-/* ---------- Intro ---------- */
-.intro {
-  text-align: center;
-  padding: 60px 20px 20px;
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 6px;
 }
 
-.intro h1 {
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
   font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #1a1a1a;
+  color: white;
+  cursor: pointer;
 }
 
-.intro p {
-  font-size: 1.1rem;
-  color: #555;
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+.lightbox-arrow:hover,
+.lightbox-close:hover {
+  color: #ccc;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ---------- Mobile overrides (always last) ---------- */
+@media (max-width: 600px) {
+  .logo img {
+    height: 36px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .service-row {
+    flex-direction: column;
+  }
+
+  .service-row img,
+  .service-text {
+    width: 100%;
+  }
 }
