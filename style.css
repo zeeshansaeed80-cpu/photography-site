@@ -85,7 +85,7 @@ body {
 
 /* ---------- Hero ---------- */
 .hero {
-  height: 80vh;
+  height: 100vh;
   background-image: url('images/hero.jpg');
   background-size: cover;
   background-position: center;
