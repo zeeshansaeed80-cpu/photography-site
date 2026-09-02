@@ -398,3 +398,6 @@ footer {
 .not-found-link:hover {
   background-color: #333;
 }
+@view-transition {
+  navigation: auto;
+}
