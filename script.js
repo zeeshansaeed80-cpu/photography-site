@@ -1,4 +1,5 @@
 // Lightbox
+const lightboxCaption = document.getElementById('lightboxCaption');
 const galleryImages = document.querySelectorAll('.gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -12,6 +13,7 @@ function showImage(index) {
   currentIndex = index;
   lightboxImg.src = galleryImages[currentIndex].src;
   lightboxImg.alt = galleryImages[currentIndex].alt;
+  lightboxCaption.textContent = galleryImages[currentIndex].alt;
 }
 
 galleryImages.forEach(function(img, index) {
