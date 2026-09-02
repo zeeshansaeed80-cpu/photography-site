@@ -260,6 +260,35 @@ body {
   background-color: #333;
 }
 
+.contact button[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Spam honeypot — hidden from users, visible to bots */
+.contact input[name="_gotcha"] {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.95rem;
+  min-height: 1.2em;
+}
+
+.form-status.success {
+  color: #1a7a3c;
+}
+
+.form-status.error {
+  color: #b3261e;
+}
+
 /* ---------- Lightbox ---------- */
 .lightbox.hidden {
   display: none;

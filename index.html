@@ -149,7 +149,10 @@
  
   <section class="contact" id="contact">
     <h2>Get in Touch</h2>
-    <form>
+    <form id="contact-form" action="https://formspree.io/f/mbgjoqop" method="POST">
+      <input type="hidden" name="_subject" value="New message from Zeeshan Saeed's Creations">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required>
 
@@ -160,6 +163,8 @@
       <textarea id="message" name="message" rows="5" required></textarea>
 
       <button type="submit">Send Message</button>
+
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
     </form>
   </section>
 </main> 
