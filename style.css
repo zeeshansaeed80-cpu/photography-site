@@ -50,6 +50,10 @@ body {
 .nav-links a:hover {
   color: #ccc;
 }
+.nav-links a.active {
+  color: #ccc;
+  border-bottom: 2px solid white;
+}
 
 .dropdown {
   position: relative;
@@ -359,4 +363,38 @@ footer {
   .service-text {
     width: 100%;
   }
+}
+/* ---------- 404 Page ---------- */
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.not-found h1 {
+  font-size: 5rem;
+  color: #1a1a1a;
+}
+
+.not-found p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.not-found-link {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.not-found-link:hover {
+  background-color: #333;
 }
