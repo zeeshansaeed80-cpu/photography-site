@@ -448,6 +448,28 @@ footer {
   font-size: 0.9rem;
 }
 
+.footer-social {
+  margin-bottom: 8px;
+}
+
+.footer-social a,
+.contact-intro a {
+  color: #1a1a1a;
+  font-weight: bold;
+  text-underline-offset: 3px;
+}
+
+.footer-social a:hover,
+.contact-intro a:hover {
+  color: #555;
+}
+
+.contact .contact-intro {
+  text-align: center;
+  color: #707070;
+  margin: -16px 0 20px;
+}
+
 /* ---------- Mobile overrides (always last) ---------- */
 @media (max-width: 600px) {
   .logo img {
