@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travels - Zeeshan Saeed's Creations</title>
+  <link rel="icon" type="image/png" href="images/logo_black_transparent.png">
+  <meta name="description" content="City photography from Zeeshan Saeed's travels: Prague, Amsterdam, Bruges and Paris, each with its own gallery and story.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- GoatCounter: private page-view stats (no cookies, invisible to visitors) -->
+  <script data-goatcounter="https://zeeshansaeed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<header class="navbar" id="home">
+  <div class="logo"><img src="images/logo_white_transparent.png" alt="Zeeshan Saeed's Creations logo"></div>
+  <nav aria-label="Main">
+    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu"><span aria-hidden="true">&#9776;</span></button>
+    <ul class="nav-links" id="primary-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="famous-landmark.html">Famous Landmark</a></li>
+      <li><a href="nature.html">Nature</a></li>
+      <li class="dropdown">
+        <a href="travels.html" class="active">Travels</a>
+        <ul class="dropdown-menu">
+          <li><a href="prague.html">Prague</a></li>
+          <li><a href="amsterdam.html">Amsterdam</a></li>
+          <li><a href="bruges.html">Bruges</a></li>
+          <li><a href="paris.html">Paris</a></li>
+        </ul>
+      </li>
+      <li><a href="shop.html">Shop &amp; Licensing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero hero-short" style="background-image: url('images/travels/bruges/bruges-06.jpg');"></section>
+
+  <section class="intro">
+    <h1>Travels</h1>
+    <p>Cities I've walked with a camera</p>
+  </section>
+
+  <section class="about">
+    <p>Some trips I planned around photography; others I simply brought the camera along and let the city decide. These are the places that ended up with a gallery of their own, in the order I visited them, each with its own story about the light, the weather and the streets that stayed with me.</p>
+  </section>
+
+  <!-- City cards, in travel order. To add a city: copy one <li class="city-card"> block and change the link, photo, text and photo count. -->
+  <ul class="city-grid">
+    <li class="city-card">
+      <div class="city-card-photo"><img src="images/travels/prague/prague-card.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="city-card-body">
+        <h2><a href="prague.html">Prague</a></h2>
+        <p class="city-card-country">Czech Republic</p>
+        <p class="city-card-teaser">Where this whole habit really took hold. St. Vitus Cathedral over the castle grounds, Charles Bridge before the crowds arrive, the rooftops of Mal&aacute; Strana leading the eye toward the castle. But the narrow streets that never make any list ended up being the photos I'm proudest of.</p>
+        <p class="city-card-meta">48 photos <span aria-hidden="true">&rarr;</span></p>
+      </div>
+    </li>
+    <li class="city-card">
+      <div class="city-card-photo"><img src="images/travels/amsterdam/amsterdam-card.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="city-card-body">
+        <h2><a href="amsterdam.html">Amsterdam</a></h2>
+        <p class="city-card-country">Netherlands</p>
+        <p class="city-card-teaser">A city that rewards slow walking: canals bending around every corner, bicycles everywhere, and museums dense enough to fill days. Add a day trip to Haarlem and a mural near Leidseplein that became one of my favourite shots of the trip.</p>
+        <p class="city-card-meta">39 photos <span aria-hidden="true">&rarr;</span></p>
+      </div>
+    </li>
+    <li class="city-card">
+      <div class="city-card-photo"><img src="images/travels/bruges/bruges-card.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="city-card-body">
+        <h2><a href="bruges.html">Bruges</a></h2>
+        <p class="city-card-country">Belgium</p>
+        <p class="city-card-teaser">Maybe the most beautiful city I've ever photographed. Canals lined with medieval brick, cobblestones that haven't changed shape in centuries, and a city small enough to walk end to end, where every direction still finds something worth stopping for.</p>
+        <p class="city-card-meta">47 photos <span aria-hidden="true">&rarr;</span></p>
+      </div>
+    </li>
+    <li class="city-card">
+      <div class="city-card-photo"><img src="images/travels/paris/paris-card.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="city-card-body">
+        <h2><a href="paris.html">Paris</a></h2>
+        <p class="city-card-country">France</p>
+        <p class="city-card-teaser">A full day of shooting, cut short by the rain. The gallery is smaller for it, but the Eiffel Tower still looked like the Eiffel Tower, and the view from the top over a grey, glistening city was worth getting soaked for.</p>
+        <p class="city-card-meta">22 photos <span aria-hidden="true">&rarr;</span></p>
+      </div>
+    </li>
+  </ul>
+</main>
+
+<footer>
+  <p class="footer-social"><a href="https://www.instagram.com/zeeshansaeed80/" target="_blank" rel="noopener">Follow me on Instagram<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+  <p>&copy; 2026 Zeeshan Saeed's Creations. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
