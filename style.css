@@ -401,6 +401,15 @@ body {
   line-height: 1;
 }
 
+/* Comfortable tap area (at least 44 x 44 px) for the close button */
+.lightbox-close {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .lightbox-close:focus-visible,
 .lightbox-arrow:focus-visible {
   outline: 2px solid white;
@@ -411,6 +420,11 @@ body {
 /* Stop the page behind the lightbox from scrolling */
 body.lightbox-open {
   overflow: hidden;
+}
+
+/* Horizontal swipes are handled by script.js; keep vertical panning and pinch-to-zoom */
+.lightbox {
+  touch-action: pan-y pinch-zoom;
 }
 
 /* Text for screen readers only */

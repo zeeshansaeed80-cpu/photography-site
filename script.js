@@ -119,6 +119,59 @@ if (galleryImages.length) {
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) closeLightbox();
   });
+
+  // Touch swipe: left for the next photo, right for the previous one
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let swiping = false;
+
+  function isZoomedIn() {
+    return window.visualViewport && window.visualViewport.scale > 1.05;
+  }
+
+  lightbox.addEventListener('touchstart', function(e) {
+    // Ignore pinch gestures and swipes while zoomed in, so pinch-to-zoom still works
+    if (e.touches.length !== 1 || isZoomedIn()) {
+      swiping = false;
+      return;
+    }
+    swiping = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    lightboxImg.style.transition = 'none';
+  }, { passive: true });
+
+  lightbox.addEventListener('touchmove', function(e) {
+    if (!swiping || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    // Let the photo follow the finger on horizontal drags
+    if (!reduceMotion.matches && Math.abs(dx) > Math.abs(dy)) {
+      lightboxImg.style.transform = 'translateX(' + dx + 'px)';
+    }
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function(e) {
+    if (!swiping) return;
+    swiping = false;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    lightboxImg.style.transition = 'transform 0.2s ease';
+    lightboxImg.style.transform = '';
+
+    // Only count clear, mostly horizontal swipes
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      showImage(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+    }
+  });
+
+  lightbox.addEventListener('touchcancel', function() {
+    swiping = false;
+    lightboxImg.style.transition = 'transform 0.2s ease';
+    lightboxImg.style.transform = '';
+  });
 }
 
 // Discourage casual saving of photos: block right-click and drag on gallery and lightbox images
