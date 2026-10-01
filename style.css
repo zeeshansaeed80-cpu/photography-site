@@ -174,6 +174,36 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Thumbnails are wrapped in buttons by script.js so they work with the keyboard */
+.gallery-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* Clicks on the caption strip should reach the photo button underneath */
+.gallery-caption {
+  pointer-events: none;
+}
+
+/* Keyboard focus: outline the photo and show its caption, like hover does */
+.gallery-item:has(.gallery-open:focus-visible) {
+  outline: 3px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+.gallery-item:has(.gallery-open:focus-visible) img {
+  transform: scale(1.05);
+}
+
+.gallery-item:has(.gallery-open:focus-visible) .gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* ---------- Services (kept for reuse on the parlour site later) ---------- */
 .services {
   max-width: 1000px;
@@ -353,6 +383,40 @@ body {
 .lightbox-arrow:hover,
 .lightbox-close:hover {
   color: #ccc;
+}
+
+/* Lightbox controls are real buttons: remove default button styling */
+.lightbox-close,
+.lightbox-arrow {
+  background: none;
+  border: 0;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.lightbox-close:focus-visible,
+.lightbox-arrow:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Stop the page behind the lightbox from scrolling */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* Text for screen readers only */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- Footer ---------- */

@@ -1,47 +1,123 @@
-// Lightbox
-const lightboxCaption = document.getElementById('lightboxCaption');
-const galleryImages = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxClose = document.getElementById('lightboxClose');
-const lightboxPrev = document.getElementById('lightboxPrev');
-const lightboxNext = document.getElementById('lightboxNext');
+// ---------- Gallery lightbox (keyboard and screen-reader accessible) ----------
+// Builds the photo viewer once here, so gallery pages only need plain <img> tags inside .gallery
+const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
 
-// Only set up the lightbox on pages that have one (not the shop or 404 pages)
-if (lightbox && galleryImages.length) {
+if (galleryImages.length) {
+  // Wrap each thumbnail in a real button: reachable with Tab, opens with Enter or Space
+  const thumbButtons = galleryImages.map(function(img, index) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gallery-open';
+    button.setAttribute('aria-label', 'View larger: ' + img.alt);
+    img.parentNode.insertBefore(button, img);
+    button.appendChild(img);
+    button.addEventListener('click', function() {
+      openLightbox(index);
+    });
+
+    // The hover caption repeats the button label, so hide it from screen readers
+    const caption = button.parentNode.querySelector('.gallery-caption');
+    if (caption) caption.setAttribute('aria-hidden', 'true');
+
+    return button;
+  });
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox hidden';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Photo viewer');
+  lightbox.innerHTML =
+    '<button type="button" class="lightbox-close" aria-label="Close">&times;</button>' +
+    '<button type="button" class="lightbox-arrow lightbox-prev" aria-label="Previous photo">&#10094;</button>' +
+    '<img class="lightbox-img" src="" alt="">' +
+    '<p class="lightbox-caption" aria-live="polite"></p>' +
+    '<button type="button" class="lightbox-arrow lightbox-next" aria-label="Next photo">&#10095;</button>';
+  document.body.appendChild(lightbox);
+
+  const closeButton = lightbox.querySelector('.lightbox-close');
+  const prevButton = lightbox.querySelector('.lightbox-prev');
+  const nextButton = lightbox.querySelector('.lightbox-next');
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+  const focusableInLightbox = [closeButton, prevButton, nextButton];
+
   let currentIndex = 0;
+  let inertElements = [];
 
   function showImage(index) {
-    currentIndex = index;
-    lightboxImg.src = galleryImages[currentIndex].src;
-    lightboxImg.alt = galleryImages[currentIndex].alt;
-    lightboxCaption.textContent = galleryImages[currentIndex].alt;
+    currentIndex = (index + galleryImages.length) % galleryImages.length;
+    const img = galleryImages[currentIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+
+    // Visible caption stays the same; screen readers also hear "Photo 3 of 24"
+    const counter = document.createElement('span');
+    counter.className = 'visually-hidden';
+    counter.textContent = 'Photo ' + (currentIndex + 1) + ' of ' + galleryImages.length + ': ';
+    lightboxCaption.replaceChildren(counter, document.createTextNode(img.alt));
   }
 
-  galleryImages.forEach(function(img, index) {
-    img.addEventListener('click', function() {
-      showImage(index);
-      lightbox.classList.remove('hidden');
+  function openLightbox(index) {
+    showImage(index);
+    lightbox.classList.remove('hidden');
+
+    // Make the rest of the page unreachable (Tab and screen readers) while the viewer is open
+    inertElements = Array.from(document.body.children).filter(function(el) {
+      return el !== lightbox && !el.inert;
     });
-  });
+    inertElements.forEach(function(el) { el.inert = true; });
+    document.body.classList.add('lightbox-open');
 
-  lightboxNext.addEventListener('click', function(e) {
-    e.stopPropagation();
-    showImage((currentIndex + 1) % galleryImages.length);
-  });
+    document.addEventListener('keydown', handleLightboxKeys);
+    closeButton.focus();
+  }
 
-  lightboxPrev.addEventListener('click', function(e) {
-    e.stopPropagation();
-    showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
-  });
-
-  lightboxClose.addEventListener('click', function(e) {
-    e.stopPropagation();
+  function closeLightbox() {
     lightbox.classList.add('hidden');
-  });
+    inertElements.forEach(function(el) { el.inert = false; });
+    inertElements = [];
+    document.body.classList.remove('lightbox-open');
+    document.removeEventListener('keydown', handleLightboxKeys);
 
-  lightbox.addEventListener('click', function() {
-    lightbox.classList.add('hidden');
+    // Return focus to the thumbnail of the photo that was last on screen
+    const thumb = thumbButtons[currentIndex];
+    thumb.focus({ preventScroll: true });
+    thumb.scrollIntoView({ block: 'center' });
+  }
+
+  function handleLightboxKeys(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      showImage(currentIndex + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      showImage(currentIndex - 1);
+    } else if (e.key === 'Tab') {
+      // Keep Tab / Shift+Tab cycling through the viewer's buttons only
+      e.preventDefault();
+      const last = focusableInLightbox.length - 1;
+      const current = focusableInLightbox.indexOf(document.activeElement);
+      let next;
+      if (e.shiftKey) {
+        next = current <= 0 ? last : current - 1;
+      } else {
+        next = current === -1 || current === last ? 0 : current + 1;
+      }
+      focusableInLightbox[next].focus();
+    }
+  }
+
+  closeButton.addEventListener('click', closeLightbox);
+  prevButton.addEventListener('click', function() { showImage(currentIndex - 1); });
+  nextButton.addEventListener('click', function() { showImage(currentIndex + 1); });
+
+  // Clicking the dark background closes the viewer; clicking the photo itself does not
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
   });
 }
 
