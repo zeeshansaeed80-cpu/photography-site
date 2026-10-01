@@ -42,6 +42,19 @@ lightbox.addEventListener('click', function() {
   lightbox.classList.add('hidden');
 });
 
+// Discourage casual saving of photos: block right-click and drag on gallery and lightbox images
+function isProtectedImage(el) {
+  return el.tagName === 'IMG' && (el.closest('.gallery') || el.closest('.lightbox'));
+}
+
+document.addEventListener('contextmenu', function(e) {
+  if (isProtectedImage(e.target)) e.preventDefault();
+});
+
+document.addEventListener('dragstart', function(e) {
+  if (isProtectedImage(e.target)) e.preventDefault();
+});
+
 // Hamburger menu
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const navLinks = document.querySelector('.nav-links');
