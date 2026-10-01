@@ -134,13 +134,41 @@ document.addEventListener('dragstart', function(e) {
   if (isProtectedImage(e.target)) e.preventDefault();
 });
 
-// Hamburger menu
+// ---------- Mobile menu ----------
 const hamburgerBtn = document.getElementById('hamburgerBtn');
-const navLinks = document.querySelector('.nav-links');
+const navLinks = document.getElementById('primary-menu');
 
-hamburgerBtn.addEventListener('click', function() {
-  navLinks.classList.toggle('active');
-});
+if (hamburgerBtn && navLinks) {
+  function setMenuOpen(open) {
+    navLinks.classList.toggle('active', open);
+    hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  hamburgerBtn.addEventListener('click', function() {
+    setMenuOpen(hamburgerBtn.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Escape closes the menu and puts focus back on the button (the lightbox handles its own Escape)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navLinks.classList.contains('active') &&
+        !document.body.classList.contains('lightbox-open')) {
+      setMenuOpen(false);
+      hamburgerBtn.focus();
+    }
+  });
+
+  // Close the menu once a link is chosen (e.g. About or Contact on the home page),
+  // but not when tapping "Travels", which only opens the city list
+  navLinks.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.getAttribute('href') !== '#') setMenuOpen(false);
+  });
+
+  // Reset the menu if the window is widened past the mobile layout
+  window.matchMedia('(min-width: 601px)').addEventListener('change', function(e) {
+    if (e.matches) setMenuOpen(false);
+  });
+}
 
 // Contact form — submit to Formspree via AJAX so the visitor stays on the page
 const contactForm = document.getElementById('contact-form');
