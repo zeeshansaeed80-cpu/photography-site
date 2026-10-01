@@ -7,40 +7,43 @@ const lightboxClose = document.getElementById('lightboxClose');
 const lightboxPrev = document.getElementById('lightboxPrev');
 const lightboxNext = document.getElementById('lightboxNext');
 
-let currentIndex = 0;
+// Only set up the lightbox on pages that have one (not the shop or 404 pages)
+if (lightbox && galleryImages.length) {
+  let currentIndex = 0;
 
-function showImage(index) {
-  currentIndex = index;
-  lightboxImg.src = galleryImages[currentIndex].src;
-  lightboxImg.alt = galleryImages[currentIndex].alt;
-  lightboxCaption.textContent = galleryImages[currentIndex].alt;
-}
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = galleryImages[currentIndex].src;
+    lightboxImg.alt = galleryImages[currentIndex].alt;
+    lightboxCaption.textContent = galleryImages[currentIndex].alt;
+  }
 
-galleryImages.forEach(function(img, index) {
-  img.addEventListener('click', function() {
-    showImage(index);
-    lightbox.classList.remove('hidden');
+  galleryImages.forEach(function(img, index) {
+    img.addEventListener('click', function() {
+      showImage(index);
+      lightbox.classList.remove('hidden');
+    });
   });
-});
 
-lightboxNext.addEventListener('click', function(e) {
-  e.stopPropagation();
-  showImage((currentIndex + 1) % galleryImages.length);
-});
+  lightboxNext.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showImage((currentIndex + 1) % galleryImages.length);
+  });
 
-lightboxPrev.addEventListener('click', function(e) {
-  e.stopPropagation();
-  showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
-});
+  lightboxPrev.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+  });
 
-lightboxClose.addEventListener('click', function(e) {
-  e.stopPropagation();
-  lightbox.classList.add('hidden');
-});
+  lightboxClose.addEventListener('click', function(e) {
+    e.stopPropagation();
+    lightbox.classList.add('hidden');
+  });
 
-lightbox.addEventListener('click', function() {
-  lightbox.classList.add('hidden');
-});
+  lightbox.addEventListener('click', function() {
+    lightbox.classList.add('hidden');
+  });
+}
 
 // Discourage casual saving of photos: block right-click and drag on gallery and lightbox images
 function isProtectedImage(el) {
