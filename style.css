@@ -916,3 +916,12 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* City headings inside multi-city galleries (e.g. Turkey) */
+.gallery-heading {
+  max-width: 1500px;
+  margin: 30px auto 0;
+  padding: 0 25px;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+}
