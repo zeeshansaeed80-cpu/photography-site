@@ -169,6 +169,12 @@ body {
   transform: scale(1.05);
 }
 
+/* Wide photos are cropped from the right (set by script.js) so the watermark isn't cut off */
+.gallery-item img.crop-right {
+  object-position: left center;
+  transform-origin: left center;
+}
+
 .gallery-caption {
   position: absolute;
   bottom: 0;

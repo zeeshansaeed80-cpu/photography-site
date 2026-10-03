@@ -174,6 +174,15 @@ if (galleryImages.length) {
   });
 }
 
+// Wide photos: crop thumbnails from the right so the bottom-left watermark stays visible
+document.querySelectorAll('.gallery img').forEach(function(img) {
+  function markWide() {
+    if (img.naturalWidth / img.naturalHeight > 1.55) img.classList.add('crop-right');
+  }
+  if (img.complete && img.naturalWidth) markWide();
+  else img.addEventListener('load', markWide, { once: true });
+});
+
 // Discourage casual saving of photos: block right-click and drag on gallery and lightbox images
 function isProtectedImage(el) {
   return el.tagName === 'IMG' && (el.closest('.gallery') || el.closest('.lightbox'));
