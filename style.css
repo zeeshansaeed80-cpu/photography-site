@@ -105,7 +105,8 @@ body {
   height: 100vh;
   background-image: url('images/hero.jpg');
   background-size: cover;
-  background-position: center;
+  /* Anchor bottom-left so the watermark is never cropped off */
+  background-position: left bottom;
 }
 
 /* ---------- Intro ---------- */
@@ -134,7 +135,7 @@ body {
 }
 
 .about p {
-  color: #707070;
+  color: #555;
 }
 
 .about p:not(:last-child) {
@@ -478,7 +479,7 @@ footer {
 
 .contact .contact-intro {
   text-align: center;
-  color: #707070;
+  color: #555;
   margin: -16px 0 20px;
 }
 
@@ -608,7 +609,7 @@ footer {
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #707070;
+  color: #555;
   margin-bottom: 8px;
 }
 
@@ -667,7 +668,9 @@ footer {
 
 .shop-button-disabled,
 .shop-button-disabled:hover {
-  background-color: #b5b5b5;
+  background-color: transparent;
+  color: #555;
+  border: 1px dashed #888;
   cursor: default;
 }
 
@@ -686,7 +689,7 @@ footer {
 .shop-section-intro,
 .shop-fineprint {
   text-align: center;
-  color: #707070;
+  color: #555;
   max-width: 640px;
   margin: 0 auto;
 }
@@ -784,7 +787,7 @@ footer {
 
 .contact .optional {
   font-weight: normal;
-  color: #707070;
+  color: #555;
 }
 
 @media (max-width: 800px) {
@@ -878,7 +881,7 @@ footer {
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #707070;
+  color: #555;
   margin: 4px 0 12px;
 }
 
@@ -930,4 +933,16 @@ footer {
   padding: 0 25px;
   font-size: 1.6rem;
   color: #1a1a1a;
+}
+
+/* Touch screens have no hover: show captions as a plain line under each photo */
+@media (hover: none) {
+  .gallery-caption {
+    position: static;
+    opacity: 1;
+    transform: none;
+    background: none;
+    color: #555;
+    padding: 8px 2px 0;
+  }
 }

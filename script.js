@@ -226,6 +226,11 @@ if (hamburgerBtn && navLinks) {
     if (link && link.getAttribute('href') !== '#') setMenuOpen(false);
   });
 
+  // Close the menu when the user taps outside it
+  document.addEventListener('click', function(e) {
+    if (navLinks.classList.contains('active') && !e.target.closest('nav')) setMenuOpen(false);
+  });
+
   // Reset the menu if the window is widened past the mobile layout
   window.matchMedia('(min-width: 601px)').addEventListener('change', function(e) {
     if (e.matches) setMenuOpen(false);
