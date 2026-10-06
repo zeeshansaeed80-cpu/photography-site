@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Journal - Zeeshan Saeed's Creations</title>
   <link rel="icon" type="image/png" href="images/logo_black_transparent.png">
-  <title>Page Not Found - Zeeshan Saeed's Creations</title>
+  <meta name="description" content="Travel stories from Zeeshan Saeed's trips: day-by-day routes, history, family travel tips and the photos behind each gallery.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -33,7 +34,7 @@
           <li><a href="tallinn.html">Tallinn</a></li>
         </ul>
       </li>
-      <li><a href="journal.html">Journal</a></li>
+      <li><a href="journal.html" class="active">Journal</a></li>
       <li><a href="shop.html">Shop &amp; Licensing</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#contact">Contact</a></li>
@@ -42,11 +43,31 @@
 </header>
 
 <main>
-  <section class="not-found">
-    <h1>404</h1>
-    <p>This page doesn't exist — but the rest of the gallery does.</p>
-    <a href="index.html" class="not-found-link">Back to Home</a>
+  <section class="hero hero-short" style="background-image: url('images/travels/turkey/turkey-11.jpg');"></section>
+
+  <section class="intro">
+    <h1>Journal</h1>
+    <p>The stories behind the photos</p>
   </section>
+
+  <section class="about">
+    <p>The galleries show what I saw; the Journal is how it happened. Day-by-day routes, a little history, the mistakes worth avoiding and the moments that never made it into a photo. Most of these trips were with family, so expect strollers, ice cream stops and the occasional near-missed flight.</p>
+  </section>
+
+  <!-- Journal stories, newest first. To add one: copy a <li class="post-card"> block and change the link, photo and text. -->
+  <ul class="post-list">
+    <li class="post-card">
+      <div class="post-card-photo">
+        <img src="images/travels/turkey/turkey-28.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="post-card-body">
+        <p class="post-eyebrow">Turkey · July 2019</p>
+        <h2><a href="journal-turkey.html">Sixteen days in Turkey</a></h2>
+        <p class="post-card-teaser">A family of six, four cities and a July heatwave. Bazaars and ferries in Istanbul, Roman ruins in the Antalya heat, Rumi's tomb in Konya and balloons over Cappadocia at sunrise, with everything we'd tell a friend planning the same route.</p>
+        <p class="city-card-meta">Read the story <span aria-hidden="true">&rarr;</span></p>
+      </div>
+    </li>
+  </ul>
 </main>
 
 <footer>
