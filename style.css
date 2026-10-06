@@ -1203,6 +1203,31 @@ footer {
   margin: 0 auto;
 }
 
+/* Side-by-side story photos share one shape so the pair lines up.
+   Cropped from the bottom left to keep the watermark; the viewer still shows the whole photo. */
+.post-photos-pair .gallery-item img,
+.post-photos-pair .gallery-item img.crop-right {
+  aspect-ratio: 3 / 2;
+  max-height: none;
+  object-fit: cover;
+  object-position: left bottom;
+}
+
+/* Note under the Journal story list */
+.journal-more {
+  max-width: 1000px;
+  margin: -30px auto 0;
+  padding: 0 25px 60px;
+  text-align: center;
+  color: #555;
+}
+
+.journal-more a {
+  color: #1a1a1a;
+  font-weight: bold;
+  text-underline-offset: 3px;
+}
+
 .photo-spots {
   background: white;
   border-radius: 6px;
