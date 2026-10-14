@@ -261,7 +261,7 @@ if (contactForm) {
       if (response.ok) {
         contactForm.reset();
         formStatus.classList.add('success');
-        formStatus.textContent = "Thanks — your message has been sent. I'll get back to you soon.";
+        formStatus.textContent = "Thanks — your message has been sent. I'll reply within 1 day.";
       } else {
         const data = await response.json().catch(function() { return null; });
         const message = data && data.errors

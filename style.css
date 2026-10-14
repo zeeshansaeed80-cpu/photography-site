@@ -690,7 +690,7 @@ footer {
 .shop-fineprint {
   text-align: center;
   color: #555;
-  max-width: 640px;
+  max-width: 36em;
   margin: 0 auto;
 }
 
@@ -1282,4 +1282,38 @@ footer {
   color: #1a1a1a;
   font-weight: bold;
   text-underline-offset: 3px;
+}
+
+/* Shop: keep note text to a comfortable line length */
+.shop-note p {
+  max-width: 65ch;
+}
+
+/* Gallery pages: hero a little shorter than the screen so the page title peeks in below it */
+.hero-page {
+  height: 70vh;
+}
+
+@media (max-width: 600px) {
+  .hero-page {
+    height: 65vh;
+  }
+}
+
+/* Shop cards: keep both buttons on the same line at the bottom */
+.shop-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-card .shop-button {
+  margin-top: auto;
+}
+
+.shop-card .shop-price {
+  margin-top: auto;
+}
+
+.shop-card .shop-price + .shop-button {
+  margin-top: 16px;
 }
