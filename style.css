@@ -1084,6 +1084,11 @@ footer {
   margin-bottom: 36px;
 }
 
+/* A longer fact (e.g. Highlights) runs across the full width */
+.trip-facts-wide {
+  grid-column: 1 / -1;
+}
+
 .trip-facts dt {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
