@@ -1322,3 +1322,20 @@ footer {
 .shop-card .shop-price + .shop-button {
   margin-top: 16px;
 }
+
+/* Keep the menu bar visible at the top while scrolling, on every page */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* The photo viewer must sit above the sticky menu bar */
+.lightbox {
+  z-index: 1000;
+}
+
+/* Links that jump down the page (#about, #contact, story sections) stop below the menu bar */
+html {
+  scroll-padding-top: 100px;
+}
