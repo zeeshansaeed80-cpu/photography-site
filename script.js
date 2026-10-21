@@ -50,6 +50,9 @@ if (galleryImages.length) {
     const img = galleryImages[currentIndex];
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
+    // Family photos can't be saved to Pinterest, in the viewer either
+    if (img.hasAttribute('data-pin-nopin')) lightboxImg.setAttribute('data-pin-nopin', 'true');
+    else lightboxImg.removeAttribute('data-pin-nopin');
 
     // Visible caption stays the same; screen readers also hear "Photo 3 of 24"
     const counter = document.createElement('span');
